@@ -1,10 +1,20 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
+import { defineConfig } from "astro/config";
 
-import sitemap from '@astrojs/sitemap';
+// Astro integrations
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+
+// Vite plugins
+import basicSsl from "@vitejs/plugin-basic-ssl";
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
+  site: "https://example.com",
+  integrations: [mdx(), sitemap()],
+  vite: {
+    plugins: [basicSsl()],
+    server: {
+      https: true,
+    },
+  },
 });
